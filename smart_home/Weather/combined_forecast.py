@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import json
 import requests as r
 
 load_dotenv()
@@ -17,8 +18,8 @@ def one_call_forecast():
       'units': 'metric'
     }
   )
-  return response.json()
+  return response
 
-
-
-one_call_forecast()
+def write_to_file(data, filepath = 'combined_forecast.json'):
+  with open(filepath, 'w+') as f:
+    f.write(data)
