@@ -1,17 +1,18 @@
-from smart_home.Weather.combined_forecast import one_call_forecast, write_to_file
+from smart_home.Weather.collect_combined_forecast import one_call_forecast
 from pathlib import Path
-import json
+
 
 def test_one_call_returns_expected_json():
-  assert one_call_forecast().status_code == 200
-  assert 'current' in one_call_forecast().json()
+    assert one_call_forecast().status_code == 200
+    assert "current" in one_call_forecast().json()
 
-def test_json_file_is_created():
-  test_json = '{"test_key": "test_value"}'
-  test_file_path = Path('tests/test_weather/dummy_json.json')
 
-  write_to_file(test_json, test_file_path)
+# def test_json_file_is_created():
+#   test_json = '{"test_key": "test_value"}'
+#   test_file_path = Path('tests/test_weather/dummy_json.json')
 
-  assert test_file_path.is_file()
+#   write_to_file(test_json, test_file_path)
 
-  test_file_path.unlink()
+#   assert test_file_path.is_file()
+
+#   test_file_path.unlink()
